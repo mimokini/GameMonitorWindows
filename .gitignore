@@ -1,0 +1,16 @@
+# 构建产物
+bin/
+obj/
+
+# Visual Studio / 用户级配置
+*.user
+.vs/
+
+# 含管理密码等敏感信息的本地配置，禁止入库
+config.xml
+config.xml.bak
+config.xml.tmp
+config.corrupt.*.xml
+
+# 日志
+*.log
