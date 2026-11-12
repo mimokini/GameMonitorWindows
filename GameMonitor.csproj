@@ -9,10 +9,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Version>1.5.5</Version>
-    <FileVersion>1.5.5.0</FileVersion>
-    <ProductVersion>1.5.5</ProductVersion>
-    <!-- 发布版不把 git 提交短哈希拼进 ProductVersion，保证 exe/关于页显示干净的 1.5.5 -->
+    <Version>1.5.6</Version>
+    <FileVersion>1.5.6.0</FileVersion>
+    <ProductVersion>1.5.6</ProductVersion>
+    <!-- 发布版不把 git 提交短哈希拼进 ProductVersion，保证 exe/关于页显示干净的 1.5.6 -->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
