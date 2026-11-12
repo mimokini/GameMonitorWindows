@@ -214,7 +214,7 @@ namespace GameMonitor
         }
 
         /// <summary>
-        /// 关于对话框：版本 + GitHub 发布页链接 + 打赏二维码（复用已嵌入的 GameMonitor.reward.png），
+        /// 关于对话框：版本 + 作者 + GitHub 发布页链接 + 打赏二维码（复用已嵌入的 GameMonitor.reward.png），
         /// 二维码居中约 160px，下方简短感谢文案；窗口按内容固定高度，无滚动条。
         /// 链接行按当前 DPI 下的实际文本宽度撑开窗口，避免高 DPI 下折行或截断。
         /// 不展示日志目录（日志目录只在设置页「关于」里保留一条）。
@@ -233,7 +233,7 @@ namespace GameMonitor
             }
 
             int width = Math.Max(440, linkWidth + 48);
-            int height = hasReward ? 384 : 168;
+            int height = hasReward ? 412 : 196;
 
             using (var dlg = new Form
             {
@@ -264,14 +264,20 @@ namespace GameMonitor
                     Left = 20, Top = 52, Width = width - 40, Height = 22,
                     TextAlign = ContentAlignment.MiddleLeft
                 });
-                dlg.Controls.Add(SettingsForm.CreateGitHubLink(20, 80, width - 40));
+                dlg.Controls.Add(new Label
+                {
+                    Text = "作者：君的笑颜",
+                    Left = 20, Top = 80, Width = width - 40, Height = 22,
+                    TextAlign = ContentAlignment.MiddleLeft
+                });
+                dlg.Controls.Add(SettingsForm.CreateGitHubLink(20, 108, width - 40));
 
                 if (hasReward)
                 {
                     const int side = 160;
                     var pic = new PictureBox
                     {
-                        Left = (width - side) / 2, Top = 116, Width = side, Height = side,
+                        Left = (width - side) / 2, Top = 144, Width = side, Height = side,
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Image = reward,
                         BackColor = Color.Transparent
@@ -279,7 +285,7 @@ namespace GameMonitor
                     var caption = new Label
                     {
                         Text = "感谢打赏，你的支持是持续更新的动力！",
-                        Left = 20, Top = 282, Width = width - 40, Height = 24,
+                        Left = 20, Top = 310, Width = width - 40, Height = 24,
                         TextAlign = ContentAlignment.MiddleCenter
                     };
                     dlg.Controls.Add(pic);
@@ -289,7 +295,7 @@ namespace GameMonitor
                 var ok = new Button
                 {
                     Text = "确定", Width = 108, Height = 32,
-                    Left = (width - 108) / 2, Top = hasReward ? 328 : 112,
+                    Left = (width - 108) / 2, Top = hasReward ? 356 : 140,
                     DialogResult = DialogResult.OK
                 };
                 dlg.Controls.Add(ok);

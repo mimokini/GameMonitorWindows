@@ -1245,16 +1245,18 @@ namespace GameMonitor
         {
             var page = MakeTab("关于");
 
-            var grp = MakeGroup("程序信息", 12, 10, 850, 170);
+            var grp = MakeGroup("程序信息", 12, 10, 850, 206);
             lblVersion = MakeHint($"版本 {Application.ProductVersion}", 16, 32, 800);
-            lblLogPath = MakeHint($"日志目录：{AppLog.DirectoryPath}", 16, 68, 800);
-            lblGitHub = CreateGitHubLink(16, 104, 800);
+            var lblAuthor = MakeHint("作者：君的笑颜", 16, 68, 800);
+            lblLogPath = MakeHint($"日志目录：{AppLog.DirectoryPath}", 16, 104, 800);
+            lblGitHub = CreateGitHubLink(16, 140, 800);
             grp.Controls.Add(lblVersion);
+            grp.Controls.Add(lblAuthor);
             grp.Controls.Add(lblLogPath);
             grp.Controls.Add(lblGitHub);
             page.Controls.Add(grp);
 
-            var grpOps = MakeGroup("日志与配置", 12, 190, 850, 170);
+            var grpOps = MakeGroup("日志与配置", 12, 226, 850, 170);
             var btnOpenLog = new Button { Text = "打开日志目录", Left = 16, Top = 34, Width = 130, Height = 32 };
             var btnExport = new Button { Text = "导出配置", Left = 156, Top = 34, Width = 110, Height = 32 };
             var btnImport = new Button { Text = "导入配置", Left = 276, Top = 34, Width = 110, Height = 32 };
@@ -1287,7 +1289,7 @@ namespace GameMonitor
             }
             else
             {
-                page.Controls.Add(MakeHint("收款码图片资源缺失，未能显示。", 12, 372, 800));
+                page.Controls.Add(MakeHint("收款码图片资源缺失，未能显示。", 12, 408, 800));
             }
 
             btnOpenLog.Click += (s, e) => OpenLogDirectory();
@@ -1299,7 +1301,7 @@ namespace GameMonitor
         /// <summary>关于页收款码区域：从分组下方开始，按剩余宽高取正方形，等比缩放到可用空间并水平居中。</summary>
         private static void LayoutRewardArea(TabPage page, PictureBox pic, Label caption)
         {
-            const int top = 372;
+            const int top = 408;
             const int gap = 8;
             const int captionHeight = 24;
             const int margin = 12;
