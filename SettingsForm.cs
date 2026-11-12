@@ -17,7 +17,7 @@ namespace GameMonitor
     public class SettingsForm : Form
     {
         private static readonly string[] MatchModeLabels = { "包含", "精确进程名", "精确窗口名" };
-        private const string GitHubReleasesUrl = "https://github.com/mimokini/GameMonitorWindows/releases";
+        internal const string GitHubReleasesUrl = "https://github.com/mimokini/GameMonitorWindows/releases";
         private static readonly string[] HotkeyKeyNames =
         {
             "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
@@ -1248,7 +1248,7 @@ namespace GameMonitor
             var grp = MakeGroup("程序信息", 12, 10, 850, 170);
             lblVersion = MakeHint($"版本 {Application.ProductVersion}", 16, 32, 800);
             lblLogPath = MakeHint($"日志目录：{AppLog.DirectoryPath}", 16, 68, 800);
-            lblGitHub = MakeGitHubLink(16, 104);
+            lblGitHub = CreateGitHubLink(16, 104, 800);
             grp.Controls.Add(lblVersion);
             grp.Controls.Add(lblLogPath);
             grp.Controls.Add(lblGitHub);
@@ -1551,7 +1551,7 @@ namespace GameMonitor
         }
 
         /// <summary>关于页的 GitHub 发布页：网址文本完整可见（便于复制/无法点击时查看），点击后用默认浏览器打开。</summary>
-        private LinkLabel MakeGitHubLink(int left, int top)
+        internal static LinkLabel CreateGitHubLink(int left, int top, int maxWidth)
         {
             const string prefix = "GitHub 发布页：";
             var link = new LinkLabel
@@ -1560,7 +1560,7 @@ namespace GameMonitor
                 Left = left,
                 Top = top,
                 AutoSize = true,
-                MaximumSize = new Size(800, 0),
+                MaximumSize = new Size(maxWidth, 0),
                 ForeColor = Color.DimGray,
                 LinkColor = Color.SteelBlue,
                 ActiveLinkColor = Color.SteelBlue,
@@ -1572,7 +1572,7 @@ namespace GameMonitor
             return link;
         }
 
-        private void OpenGitHubReleases()
+        internal static void OpenGitHubReleases()
         {
             try
             {
