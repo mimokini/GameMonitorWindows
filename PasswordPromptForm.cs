@@ -17,7 +17,10 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Icon = SystemIcons.Shield;
+            ShowIcon = true;
+            ShowInTaskbar = true;
+            // 与托盘/设置页统一使用 AppIcon.Resolve（标题栏与任务栏同图标）
+            Icon = AppIcon.Resolve();
 
             Controls.Add(new Label { Text = "请输入管理密码：", Left = 20, Top = 20, Width = 200 });
 

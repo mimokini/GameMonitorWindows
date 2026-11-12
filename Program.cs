@@ -4,6 +4,8 @@ namespace GameMonitor
 {
     internal static class Program
     {
+        // 单实例互斥锁：字段必须保留引用，否则 Mutex 会被 GC 回收并释放句柄，
+        // 导致「已存在实例」判定失效、出现多开。不要改成本地变量。
         private static Mutex _mutex;
 
         [STAThread]

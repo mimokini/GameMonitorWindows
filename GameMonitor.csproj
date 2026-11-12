@@ -8,6 +8,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <Version>1.5.5</Version>
+    <FileVersion>1.5.5.0</FileVersion>
+    <ProductVersion>1.5.5</ProductVersion>
+    <!-- 发布版不把 git 提交短哈希拼进 ProductVersion，保证 exe/关于页显示干净的 1.5.5 -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- app.ico 仅作编译期 ApplicationIcon 来源（写入 exe 资源），运行时从 exe 内嵌资源取图，不再随程序复制到输出目录 -->
+    <!-- 收款码以嵌入资源打包进 exe，运行时不依赖外部路径 -->
+    <EmbeddedResource Include="assets\reward.png" LogicalName="GameMonitor.reward.png" />
+  </ItemGroup>
 
 </Project>
